@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}New Post - Blogging Platform{% endblock %}
+
+{% block content %}
+  <h1>New Post</h1>
+  <form method="post" class="post-form">
+    <label for="title">Title</label>
+    <input type="text" id="title" name="title" value="{{ title }}" required>
+
+    <label for="body_markdown">Body (Markdown)</label>
+    <textarea id="body_markdown" name="body_markdown" rows="12" required>{{ body_markdown }}</textarea>
+
+    <label class="checkbox-label">
+      <input type="checkbox" name="published" checked>
+      Publish immediately
+    </label>
+
+    <button type="submit">Save Post</button>
+  </form>
+{% endblock %}

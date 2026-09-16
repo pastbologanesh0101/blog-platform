@@ -1,0 +1,10 @@
+DROP TABLE IF EXISTS post;
+
+CREATE TABLE post (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title TEXT NOT NULL,
+    slug TEXT NOT NULL UNIQUE,
+    body_markdown TEXT NOT NULL,
+    created_at TEXT NOT NULL,
+    published INTEGER NOT NULL DEFAULT 1
+);

@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Blogging Platform{% endblock %}
+
+{% block content %}
+  <h1>Latest Posts</h1>
+  {% if posts %}
+    <ul class="post-list">
+      {% for post in posts %}
+        <li class="post-list-item">
+          <a href="{{ url_for('blog.view_post', slug=post['slug']) }}">{{ post['title'] }}</a>
+          <span class="post-date">{{ post['created_at'][:10] }}</span>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No posts published yet.</p>
+  {% endif %}
+{% endblock %}

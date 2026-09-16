@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}{{ post['title'] }} - Blogging Platform{% endblock %}
+
+{% block content %}
+  <article class="post">
+    <h1>{{ post['title'] }}</h1>
+    <p class="post-meta">
+      {{ post['created_at'][:10] }}
+      {% if not post['published'] %}<span class="badge">Unpublished</span>{% endif %}
+    </p>
+    <div class="post-body">
+      {{ body_html | safe }}
+    </div>
+    <p class="post-actions">
+      <a href="{{ url_for('blog.edit_post', slug=post['slug']) }}">Edit</a>
+      {% if post['published'] %}
+        <form method="post" action="{{ url_for('blog.unpublish_post', slug=post['slug']) }}" class="inline-form">
+          <button type="submit">Unpublish</button>
+        </form>
+      {% endif %}
+    </p>
+  </article>
+{% endblock %}
